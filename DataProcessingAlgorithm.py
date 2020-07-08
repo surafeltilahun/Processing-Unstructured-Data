@@ -1,3 +1,4 @@
+#Import libraries
 import pandas as pd
 import numpy as np
 import glob as g
@@ -9,14 +10,14 @@ import dateutil.parser as dparser
 import re
 
 
-
+#set the path to the files
 sourcePath = r"*********************************************.*"
 gripSourcePath = sourcePath[0:(sourcePath.rfind('\\'))]
 destinationPath = r"************************************"
 converterPath = r"********************************************"
 outputPath =  r"*********************************************"
 
-
+#collect all files in source folder
 def collect_datafiles(a,b):
     try:
         b = g.glob(a)
@@ -24,6 +25,7 @@ def collect_datafiles(a,b):
         print("Error - While collecting InputFiles")
     return b
 
+#convert the pdfs into excel using API from PDFTables
 def convert_PDFtoExcel(a,b):
     try:
         conversion = api.Client('**********')
@@ -32,6 +34,7 @@ def convert_PDFtoExcel(a,b):
         print("Error - While converting Source file -"+a+" from pdf to excel")
     return b
 
+#move the files to Archive folder
 def MoveToArchieve(a,b,c):
     s = a+"\\"+c
     d = b+"\\"+c
@@ -42,6 +45,8 @@ def MoveToArchieve(a,b,c):
             print("The access for moving file from source to destination was denied - ")
     else:
         print("System Admin - Please check the file path of source and archive")   
+        
+#import excel files from Converted folder
 def load_inputfile(a,b):
     try:
         b = pd.read_excel(a,sheet_name=None)
@@ -49,6 +54,7 @@ def load_inputfile(a,b):
         print("Error - While Processing Inputfile")
     return b
 
+#remove an empty columns
 def removeEmptyColumns(a,b):
     try:
         findEmptyColumns = [col for col in a.columns if a[col].isnull().all()]
@@ -59,6 +65,7 @@ def removeEmptyColumns(a,b):
     except:
         print("Error - While removing Blank columns")
 
+#remove the NAs and replace them with an empty cell
 def replaceNanValues(a,b):
     try:
         b = a.replace(np.nan, '', regex=True)
@@ -66,6 +73,7 @@ def replaceNanValues(a,b):
         print("Error - While cleaning blank values")
     return b
 
+#remove headers and footers
 def removeHeadersandFooters(a,b):
     try:
         a = pd.DataFrame(a)
@@ -94,6 +102,7 @@ def removeHeadersandFooters(a,b):
         print("Error - while removing header and footer")
     return b
 
+#merge the rows where there is space in between two consecutive rows
 def rowMerger(a,b):
     try:
        rule1 = lambda x: x not in ['']
@@ -126,14 +135,15 @@ def rowMerger(a,b):
         print("Error - While merging the rows")
     return b
 
-
+#move the final cleaned version of the data to Azure Blob Storage
 def movetoAzureBlob(a,b):
     accountName = "********"
     accountKey = "************************************************************"
     containerName = "**********"
     blobService = BlockBlobService(account_name=accountName, account_key=accountKey)
     blobService.create_blob_from_text(containerName, b, a)
-    
+
+#the main function
 try:
     sourceFiles = collect_datafiles(sourcePath,0)
     if sourceFiles:
