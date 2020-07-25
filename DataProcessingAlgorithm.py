@@ -82,7 +82,6 @@ def removeHeadersandFooters(a,b):
         b = a.astype(str)
         header_ = re.compile("^ID.*Start.*$|^Task.*Job.*$|^Trade.*Company.*$|^Start.*Finish.*$|^Critical.*Job.*$|^Date.*Activity.*$")
         findheaderindex = b[b.apply(lambda x : True if header_.search("".join(x)) else False, axis=1)].index
-        print(findheaderindex)
         findheaderindex = list(findheaderindex)
         findfooterindex = list(findfooterindex)
         if findheaderindex:
@@ -143,7 +142,7 @@ def movetoAzureBlob(a,b):
     blobService = BlockBlobService(account_name=accountName, account_key=accountKey)
     blobService.create_blob_from_text(containerName, b, a)
 
-#the main function
+#Main function
 try:
     sourceFiles = collect_datafiles(sourcePath,0)
     if sourceFiles:
