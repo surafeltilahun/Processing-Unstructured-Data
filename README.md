@@ -7,10 +7,13 @@ This algorithm is inteded to process and convert unstructured data (PDF), with d
 The algorithm requires column names and footers as a parameter and API from PDFTables (https://pdftables.com/) to convert the PDFs to Excel. It also requires four folders; Source, Converted, Output and Archive.
 
 
-Source - is a folder that should contain the original PDF files &nbsp;
-Converted - is a folder that shold contain the converted Excel files &nbsp;
-Output - should comprise files that have been cleaned and saved in CSV format &nbsp;
-Archive - this folder holds the original PDF files that have been successully processed by the algorithm (moved from source folder) &nbsp;
+Source - is a folder that should contain the original PDF files
+
+Converted - is a folder that shold contain the converted Excel files
+
+Output - should comprise files that have been cleaned and saved in CSV format
+
+Archive - this folder holds the original PDF files that have been successully processed by the algorithm (moved from source folder)
 
 
 
