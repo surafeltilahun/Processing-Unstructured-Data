@@ -1,6 +1,6 @@
 # Processing unstructured data
 
-This algorithm is inteded to process and convert unstructured data (PDF) into semi-structured data (CSV). The unstructured data have different sources and no similarity among them. The algorithm is able to read in PDF files, remove headers and footers, and merge rows then save the files in CSV format. The algorithm also checks if the data has been succesfully extracted from PDF files and if so, the source files from the Source folder will be moved to Archive folder, which enables us to keep track of the files that are succesfully processed or not by the algorithm. 
+This algorithm is inteded to process and convert unstructured data (PDF), with different format into semi-structured data (CSV). The algorithm is able to read in PDF files, remove headers and footers, and merge rows then save the files in CSV format. The algorithm also checks if the data has been succesfully extracted from PDF files and if so, the source files from the Source folder will be moved to Archive folder, which enables us to keep tracking of the files that are succesfully processed or not by the algorithm. 
 
 # Requirment
 
