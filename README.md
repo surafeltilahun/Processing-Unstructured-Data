@@ -9,7 +9,7 @@ The algorithm requires column names and footers as a parameter and API from PDFT
 
 Source - is a folder that should contain the original PDF files
 
-Converted - is a folder that shold contain the converted Excel files
+Converted - is a folder that contains the converted Excel files
 
 Output - should comprise files that have been cleaned and saved in CSV format
 
