@@ -4,7 +4,7 @@ This algorithm is inteded to process and convert unstructured data (PDF), with d
 
 # Requirment
 
-The algorithm requires column names and footers as a parameter and API from PDFTables (https://pdftables.com/) to convert the PDFs to Excel. It also requires four folders; Source, Converted, Output and Archive.
+The algorithm requires column names and footers as a parameter and API from PDFTables (https://pdftables.com/) to convert the PDFs to Excel. It also requires four different storages; Source, Converted, Output and Archive.
 
 
 Source - is a folder that should contain the original PDF files
